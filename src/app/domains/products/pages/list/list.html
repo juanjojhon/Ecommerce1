@@ -1,11 +1,37 @@
-<div class= "container mx-auto">
-   
-    
-<div class = "grid grid-cols-4 gap-8 mt-5">
-    <app-product 
-    *ngFor="let product of products()"
-    [product]="product"  
-    (addToCart)="addToCart($event)"/>
+<div class="flex space-x-8 max-w-screen-xl mx-auto px-6 py-8">
+  <!-- Sidebar categorías -->
+  <aside class="w-64 bg-white rounded-xl border border-gray-200 p-4 shadow-sm">
+    <h2 class="text-lg font-semibold text-gray-800 mb-4">Categorías</h2>
+    <ul class="space-y-2">
+      <li>
+        <a
+          routerLink="/"
+          class="block px-3 py-2 rounded-lg text-sm font-medium text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 transition"
+          >
+          All
+        </a>
+      </li>
+      @for (category of categories(); track category) {
+        <li>
+          <a
+            routerLink="/"
+            [queryParams]="{ category_id: category.id }"
+            class="block px-3 py-2 rounded-lg text-sm font-medium text-gray-700 hover:bg-indigo-50 hover:text-indigo-600 transition"
+            >
+            {{ category.name }}
+          </a>
+        </li>
+      }
+    </ul>
+  </aside>
 
-</div> </div>
-
+  <!-- Productos -->
+  <section class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 w-full">
+    @for (product of products(); track product) {
+      <app-product
+        [product]="product"
+        (addToCart)="addToCart($event)"
+        />
+    }
+  </section>
+</div>

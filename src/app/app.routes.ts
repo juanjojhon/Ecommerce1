@@ -1,9 +1,7 @@
 import { Routes } from '@angular/router';
-
-import {List} from "@products/pages/list/list"
-import { About } from '@info/pages/about/about';
 import { Layout } from '@shared/components/layout/layout';
 import { NotFound } from '@info/pages/not-found/not-found';
+import { ProductDetail } from '@products/pages/product-detail/product-detail';
 
 export const routes: Routes = [
     {
@@ -12,12 +10,20 @@ export const routes: Routes = [
         children: [
             {
         path : "",
-        component:List 
+        loadComponent:() => import('./domains/products/pages/list/list')
     },
         {
         path : "about",
-        component:About 
+        loadComponent:() => import('./domains/info/pages/about/about')
+    },
+    {
+        path : "product/:id",
+        component:ProductDetail,
+      
+  
+        
     }
+
         ]
     },
     

@@ -6,78 +6,80 @@
           src="https://flowbite.com/docs/images/logo.svg"
           class="h-6"
           alt="Flowbite Logo"
-        />
-        <span class="text-xl font-bold text-gray-800">Flowbite</span>
-      </a>
-      <ul class="hidden md:flex space-x-6 text-sm font-medium text-gray-700">
-        <li>
-          <a routerLink="/" class="hover:text-indigo-600 transition-colors">Home</a></li>
-        <li>
-          <a routerLink="/about" class="hover:text-indigo-600 transition-colors">About</a></li>
-        <li>
-          <a routerLink="/services" class="hover:text-indigo-600 transition-colors">Services</a></li>
-      </ul>
-    </div>
-    <div class="relative">
-      <button class="p-2 rounded-lg border hover:bg-gray-100 transition" (click)="toogleSideMenu()">
-        <div class="absolute -top-1 -right-1 bg-indigo-600 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
-          {{ cart().length }}
-        </div>
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke-width="1.5"
-          stroke="currentColor"
-          class="w-6 h-6 text-gray-700"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z"
           />
-        </svg>
-      </button>
-    </div>
-  </div>
-</nav>
+          <span class="text-xl font-bold text-gray-800">Flowbite</span>
+        </a>
+        <ul class="hidden md:flex space-x-6 text-sm font-medium text-gray-700">
+          <li>
+            <a routerLink="/" routerLinkActive='underline'  [routerLinkActiveOptions]="{exact:true}" class="hover:text-indigo-600 transition-colors">Home</a></li>
+            <li>
+              <a routerLink="/about" routerLinkActive='underline' class="hover:text-indigo-600 transition-colors">About</a></li>
+              <li>
+                <a routerLink="/services" routerLinkActive='underline' class="hover:text-indigo-600 transition-colors">Services</a></li>
+              </ul>
+            </div>
+            <div class="relative">
+              <button class="p-2 rounded-lg border hover:bg-gray-100 transition" (click)="toogleSideMenu()">
+                <div class="absolute -top-1 -right-1 bg-indigo-600 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">
+                  {{ cart().length }}
+                </div>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="w-6 h-6 text-gray-700"
+                  >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z"
+                    />
+                  </svg>
+                </button>
+              </div>
+            </div>
+          </nav>
 
-<div
-  class="fixed top-0 right-0 z-40 w-80 h-screen bg-white border-l shadow-lg p-6 transition-transform duration-300 ease-in-out"
-  [class.translate-x-full]="hideSideMenu()"
->
-  <div class="flex justify-between items-center border-b pb-3 mb-4">
-    <p class="text-lg font-semibold text-gray-800">🛒 Mi carrito</p>
-    <button class="text-gray-500 hover:text-red-600" (click)="toogleSideMenu()">
-      <svg
-        xmlns="http://www.w3.org/2000/svg"
-        fill="none"
-        viewBox="0 0 24 24"
-        stroke-width="1.5"
-        stroke="currentColor"
-        class="w-6 h-6"
-      >
-        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
-      </svg>
-    </button>
-  </div>
+          <div
+            class="fixed top-16 right-0 z-40 w-80 h-[calc(100vh-4rem)] bg-white border-l shadow-lg p-6 transition-transform duration-300 ease-in-out"
 
-  <div class="flex flex-col gap-4 overflow-y-auto max-h-[calc(100vh-120px)] pr-1">
-    <div
-      class="flex justify-between items-center border rounded-lg p-3 hover:shadow-sm transition"
-      *ngFor="let product of cart()"
-    >
-      <div class="flex items-center space-x-3 w-2/3">
-        <img [src]="product.images[0]" [alt]="product.title" class="w-12 h-12 rounded object-cover" />
-        <h3 class="text-sm text-gray-700 font-medium line-clamp-2">{{ product.title }}</h3>
-      </div>
-      <p class="text-sm font-semibold text-indigo-600">${{ product.price }}</p>
-    </div>
+            [class.translate-x-full]="hideSideMenu()"
+            >
+            <div class="flex justify-between items-center border-b pb-3 mb-4">
+              <p class="text-lg font-semibold text-gray-800">🛒 Mi carrito</p>
+              <button class="text-gray-500 hover:text-red-600" (click)="toogleSideMenu()">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke-width="1.5"
+                  stroke="currentColor"
+                  class="w-6 h-6"
+                  >
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/>
+                </svg>
+              </button>
+            </div>
 
-    <div class="border-t pt-4 text-right">
-      <p class="text-base font-semibold text-gray-800">
-        Total: <span class="text-indigo-600">${{ total() }}</span>
-      </p>
-    </div>
-  </div>
-</div>
+            <div class="flex flex-col gap-4 overflow-y-auto max-h-[calc(100vh-120px)] pr-1">
+              @for (product of cart(); track product) {
+                <div
+                  class="flex justify-between items-center border rounded-lg p-3 hover:shadow-sm transition"
+                  >
+                  <div class="flex items-center space-x-3 w-2/3">
+                    <img [src]="product.images[0]" [alt]="product.title" class="w-12 h-12 rounded object-cover" />
+                    <h3 class="text-sm text-gray-700 font-medium line-clamp-2">{{ product.title }}</h3>
+                  </div>
+                  <p class="text-sm font-semibold text-indigo-600">${{ product.price }}</p>
+                </div>
+              }
+
+              <div class="border-t pt-4 text-right">
+                <p class="text-base font-semibold text-gray-800">
+                  Total: <span class="text-indigo-600">${{ total() }}</span>
+                </p>
+              </div>
+            </div>
+          </div>

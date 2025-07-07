@@ -11,7 +11,16 @@ export class ProductS {
 
   constructor() { }
 
-  getProducts(){
-    return this.http.get<ProductM[]>("https://api.escuelajs.co/api/v1/products");
+  getProducts(category_id?:string){
+    const url = new URL("https://api.escuelajs.co/api/v1/products")
+    if (category_id){
+      url.searchParams.set('categoryId', category_id)
+    }
+    return this.http.get<ProductM[]>(url.toString());
+;
+  }
+
+  getOne(id:string){
+ return this.http.get<ProductM>(`https://api.escuelajs.co/api/v1/products/${id}`);
   }
 }

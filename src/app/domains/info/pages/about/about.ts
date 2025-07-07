@@ -1,4 +1,4 @@
-import { CommonModule } from '@angular/common';
+
 import { Component, signal } from '@angular/core';
 import { Counter } from '../../../shared/components/counter/counter';
 import { WaveAudio } from '../../components/wave-audio/wave-audio';
@@ -6,11 +6,11 @@ import { Highlight } from '@shared/directives/highlight';
 import { Header } from '@shared/components/header/header';
 @Component({
   selector: 'app-about',
-  imports: [CommonModule, Counter, WaveAudio, Highlight, Header],
+  imports: [Counter, WaveAudio, Highlight, Header],
   templateUrl: './about.html',
   styleUrl: './about.css'
 })
-export class About {
+export default class About {
   duration = signal(1000);
   message = signal('hola');
 
